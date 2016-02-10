@@ -31,5 +31,4 @@ dependencies {
     compile files('libs/cloudinary-android-1.2.2.jar')
     compile files('libs/universal-image-loader-1.9.5.jar')
     compile 'com.google.code.gson:gson:2.4'
-    compile project(path: ':sliding_menu_library')
 }

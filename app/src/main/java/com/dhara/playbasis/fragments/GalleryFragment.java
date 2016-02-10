@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import com.cloudinary.utils.ObjectUtils;
 import com.dhara.playbasis.MyApp;
@@ -47,6 +48,7 @@ public class GalleryFragment extends Fragment implements IResponseListener{
     private ImageAdapter mImageAdpater;
     private IResponseListener mListener;
     private List<Resources> mResourceList;
+    private ProgressBar mProgressBar;
 
     public static GalleryFragment newInstance(){
         mFragment = new GalleryFragment();
@@ -64,6 +66,7 @@ public class GalleryFragment extends Fragment implements IResponseListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView= inflater.inflate(R.layout.fragment_gallery, container, false);
         mGridGallery =(GridView)mView.findViewById(R.id.gridGallery);
+        mProgressBar = (ProgressBar)mView.findViewById(R.id.progressBar);
         mListener = this;
         mResourceList = new ArrayList<>();
         return mView;
@@ -74,6 +77,7 @@ public class GalleryFragment extends Fragment implements IResponseListener{
         super.onActivityCreated(savedInstanceState);
         mImageAdpater = new ImageAdapter(mResourceList);
         mGridGallery.setAdapter(mImageAdpater);
+        mProgressBar.setVisibility(View.VISIBLE);
         new GetImagesAsyncTask(mListener).execute();
     }
 
@@ -95,6 +99,7 @@ public class GalleryFragment extends Fragment implements IResponseListener{
                 }
             }
         }
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
