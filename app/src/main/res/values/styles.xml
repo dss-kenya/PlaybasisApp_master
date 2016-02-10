@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Playbasis.TextStyleNormalBlack">
+        <item name="android:textSize">@dimen/menu_size</item>
+    </style>
+
+    <style name="Playbasis">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/normal_size</item>
+    </style>
+
+    <style name="Playbasis.TextStyleHeader">
+        <item name="android:textSize">@dimen/header_size</item>
+    </style>
+</resources>
