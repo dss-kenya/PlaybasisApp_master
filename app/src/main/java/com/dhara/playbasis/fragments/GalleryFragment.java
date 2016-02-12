@@ -15,12 +15,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 
 import com.cloudinary.utils.ObjectUtils;
 import com.dhara.playbasis.MyApp;
 import com.dhara.playbasis.R;
+import com.dhara.playbasis.activities.FullViewImageActivity;
 import com.dhara.playbasis.adapters.ImageAdapter;
 import com.dhara.playbasis.asynctasks.GetImagesAsyncTask;
 import com.dhara.playbasis.asynctasks.UploadImageAsyncTask;
@@ -41,7 +43,7 @@ import java.util.Map;
 /**
  * Created by USER on 07-02-2016.
  */
-public class GalleryFragment extends Fragment implements IResponseListener{
+public class GalleryFragment extends Fragment implements IResponseListener, AdapterView.OnItemClickListener {
     private View mView;
     private static GalleryFragment mFragment;
     private GridView mGridGallery;
@@ -67,6 +69,7 @@ public class GalleryFragment extends Fragment implements IResponseListener{
         mView= inflater.inflate(R.layout.fragment_gallery, container, false);
         mGridGallery =(GridView)mView.findViewById(R.id.gridGallery);
         mProgressBar = (ProgressBar)mView.findViewById(R.id.progressBar);
+        mGridGallery.setOnItemClickListener(this);
         mListener = this;
         mResourceList = new ArrayList<>();
         return mView;
@@ -145,5 +148,16 @@ public class GalleryFragment extends Fragment implements IResponseListener{
                 new UploadImageAsyncTask(f, mListener).execute();
             }
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Resources resource = mResourceList.get(position);
+        Intent intent = new Intent(MyApp.getAppContext(), FullViewImageActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Global.INTENT_RESOURCE,resource);
+        intent.putExtra(Global.INTENT_RESOURCE_BUNDLE, bundle);
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

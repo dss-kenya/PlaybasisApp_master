@@ -5,6 +5,8 @@ package com.dhara.playbasis.constants;
  */
 public class Global {
     public static final String INTENT_URL="url";
+    public static final String INTENT_RESOURCE="resource";
+    public static final String INTENT_RESOURCE_BUNDLE="bundle_resource";
     public static final String APP_KEY_CLOUDINARY="693247891758112";
     public static final String APP_SECRET_CLOUDINARY="urnJNWU5EpS8uvuYw2jE4D95BQA";
     public static final String NETWORK_API_KEY ="api_key";

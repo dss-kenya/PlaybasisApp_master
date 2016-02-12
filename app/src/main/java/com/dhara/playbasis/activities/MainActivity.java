@@ -20,7 +20,6 @@ import com.dhara.playbasis.fragments.MainFragment;
 import com.dhara.playbasis.fragments.NavigationDrawerFragment;
 import com.dhara.playbasis.fragments.URLFragment;
 import com.dhara.playbasis.utilities.CommonUtilities;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerListener {
     private Fragment mFragment;
